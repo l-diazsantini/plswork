@@ -241,7 +241,7 @@ class _OscilloscopeWidgetState extends State<OscilloscopeWidget>
                                 xData: FFAppState().xAxis,
                                 yData: FFAppState().yAxis,
                                 settings: LineChartBarData(
-                                  color: const Color(0xFF6F28CB),
+                                  color: FlutterFlowTheme.of(context).primary,
                                   barWidth: 2.0,
                                   isCurved: true,
                                   dotData: FlDotData(show: false),
@@ -374,7 +374,7 @@ class _OscilloscopeWidgetState extends State<OscilloscopeWidget>
                         width: 490.0,
                         height: 100.0,
                         decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).accent2,
+                          color: FlutterFlowTheme.of(context).secondary,
                           borderRadius: BorderRadius.circular(12.0),
                           shape: BoxShape.rectangle,
                         ),

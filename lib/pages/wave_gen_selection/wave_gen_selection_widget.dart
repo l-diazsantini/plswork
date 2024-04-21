@@ -314,7 +314,8 @@ class _WaveGenSelectionWidgetState extends State<WaveGenSelectionWidget> {
                             children: [
                               Icon(
                                 FFIcons.ksine,
-                                color: FlutterFlowTheme.of(context).primary,
+                                color:
+                                    FlutterFlowTheme.of(context).secondaryText,
                                 size: 36.0,
                               ),
                               Expanded(
