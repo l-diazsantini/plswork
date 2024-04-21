@@ -1,6 +1,7 @@
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/widgets/display_rec_mesg/display_rec_mesg_widget.dart';
 import 'package:flutter/material.dart';
 import 'multimeter_measurement_model.dart';
 export 'multimeter_measurement_model.dart';
@@ -85,17 +86,13 @@ class _MultimeterMeasurementWidgetState
                         ),
                   ),
                   Expanded(
-                    child: Align(
-                      alignment: const AlignmentDirectional(0.0, 0.0),
-                      child: Text(
-                        '[Measurement to be displayed here]',
-                        textAlign: TextAlign.center,
-                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Montserrat',
-                              fontSize: 45.0,
-                              letterSpacing: 0.0,
-                              fontWeight: FontWeight.w600,
-                            ),
+                    child: Padding(
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 300.0, 0.0, 0.0),
+                      child: wrapWithModel(
+                        model: _model.displayRecMesgModel,
+                        updateCallback: () => setState(() {}),
+                        child: const DisplayRecMesgWidget(),
                       ),
                     ),
                   ),
