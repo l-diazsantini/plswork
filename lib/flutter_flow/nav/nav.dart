@@ -184,6 +184,50 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ParamType.bool,
             ),
           ),
+        ),
+        FFRoute(
+          name: 'multimeterMeasurementCopy',
+          path: '/multimeterMeasurementCopy',
+          builder: (context, params) => MultimeterMeasurementCopyWidget(
+            deviceName: params.getParam(
+              'deviceName',
+              ParamType.String,
+            ),
+            deviceID: params.getParam(
+              'deviceID',
+              ParamType.String,
+            ),
+            deviceRssi: params.getParam(
+              'deviceRssi',
+              ParamType.int,
+            ),
+            hasWriteCharacteristic: params.getParam(
+              'hasWriteCharacteristic',
+              ParamType.bool,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'multimeterMeasurementCopy2',
+          path: '/multimeterMeasurementCopy2',
+          builder: (context, params) => MultimeterMeasurementCopy2Widget(
+            deviceName: params.getParam(
+              'deviceName',
+              ParamType.String,
+            ),
+            deviceID: params.getParam(
+              'deviceID',
+              ParamType.String,
+            ),
+            deviceRssi: params.getParam(
+              'deviceRssi',
+              ParamType.int,
+            ),
+            hasWriteCharacteristic: params.getParam(
+              'hasWriteCharacteristic',
+              ParamType.bool,
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

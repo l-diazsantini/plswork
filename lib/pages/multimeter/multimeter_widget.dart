@@ -233,7 +233,7 @@ class _MultimeterWidgetState extends State<MultimeterWidget> {
                       );
 
                       context.pushNamed(
-                        'multimeterMeasurement',
+                        'multimeterMeasurementCopy',
                         queryParameters: {
                           'deviceName': serializeParam(
                             widget.deviceName,
@@ -350,7 +350,7 @@ class _MultimeterWidgetState extends State<MultimeterWidget> {
                       );
 
                       context.pushNamed(
-                        'multimeterMeasurement',
+                        'multimeterMeasurementCopy2',
                         queryParameters: {
                           'deviceName': serializeParam(
                             widget.deviceName,

@@ -9,3 +9,7 @@ export '/pages/multimeter_measurement/multimeter_measurement_widget.dart'
     show MultimeterMeasurementWidget;
 export '/pages/wave_gen_selection/wave_gen_selection_widget.dart'
     show WaveGenSelectionWidget;
+export '/pages/multimeter_measurement_copy/multimeter_measurement_copy_widget.dart'
+    show MultimeterMeasurementCopyWidget;
+export '/pages/multimeter_measurement_copy2/multimeter_measurement_copy2_widget.dart'
+    show MultimeterMeasurementCopy2Widget;

@@ -183,190 +183,196 @@ class _DemoPageWidgetState extends State<DemoPageWidget> {
           top: true,
           child: Padding(
             padding: const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 0.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'You can send data to the connected device and receive data back from it.',
-                  style: FlutterFlowTheme.of(context).labelMedium.override(
-                        fontFamily: 'Montserrat',
-                        letterSpacing: 0.0,
-                        lineHeight: 1.4,
-                      ),
-                ),
-                Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Expanded(
-                        child: SizedBox(
-                          width: double.infinity,
-                          child: TextFormField(
-                            controller: _model.textController,
-                            focusNode: _model.textFieldFocusNode,
-                            autofocus: false,
-                            textCapitalization: TextCapitalization.none,
-                            obscureText: false,
-                            decoration: InputDecoration(
-                              hintText: 'Enter data to send...',
-                              hintStyle: FlutterFlowTheme.of(context)
-                                  .labelLarge
-                                  .override(
-                                    fontFamily: 'Montserrat',
-                                    letterSpacing: 0.0,
-                                  ),
-                              enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: FlutterFlowTheme.of(context).primary,
-                                  width: 2.0,
-                                ),
-                                borderRadius: BorderRadius.circular(10.0),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: FlutterFlowTheme.of(context).primary,
-                                  width: 2.0,
-                                ),
-                                borderRadius: BorderRadius.circular(10.0),
-                              ),
-                              errorBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: FlutterFlowTheme.of(context).error,
-                                  width: 2.0,
-                                ),
-                                borderRadius: BorderRadius.circular(10.0),
-                              ),
-                              focusedErrorBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: FlutterFlowTheme.of(context).error,
-                                  width: 2.0,
-                                ),
-                                borderRadius: BorderRadius.circular(10.0),
-                              ),
-                              filled: true,
-                              fillColor: FlutterFlowTheme.of(context).tertiary,
-                            ),
-                            style: FlutterFlowTheme.of(context)
-                                .bodyLarge
-                                .override(
-                                  fontFamily: 'Montserrat',
-                                  color: FlutterFlowTheme.of(context).primary,
-                                  letterSpacing: 0.0,
-                                ),
-                            validator: _model.textControllerValidator
-                                .asValidator(context),
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
-                        child: FlutterFlowIconButton(
-                          borderColor: Colors.transparent,
-                          borderRadius: 30.0,
-                          buttonSize: 50.0,
-                          fillColor: FlutterFlowTheme.of(context).tertiary,
-                          icon: const Icon(
-                            Icons.send_rounded,
-                            color: Colors.white,
-                            size: 24.0,
-                          ),
-                          showLoadingIndicator: true,
-                          onPressed: () async {
-                            await actions.sendData(
-                              BTDeviceStruct(
-                                name: widget.deviceName,
-                                id: widget.deviceId,
-                                rssi: _model.currentRssi,
-                              ),
-                              _model.textController.text,
-                            );
-                            ScaffoldMessenger.of(context).clearSnackBars();
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text(
-                                  'Data sent to device',
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyLarge
-                                      .override(
-                                        fontFamily: 'Montserrat',
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryText,
-                                        letterSpacing: 0.0,
-                                      ),
-                                ),
-                                duration: const Duration(milliseconds: 2000),
-                                backgroundColor:
-                                    FlutterFlowTheme.of(context).success,
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
-                  child: wrapWithModel(
-                    model: _model.displayRecMesgModel,
-                    updateCallback: () => setState(() {}),
-                    child: DisplayRecMesgWidget(
-                      device: BTDeviceStruct(
-                        name: widget.deviceName,
-                        id: widget.deviceId,
-                        rssi: widget.deviceRssi,
-                      ),
-                    ),
-                  ),
-                ),
-                FFButtonWidget(
-                  onPressed: () async {
-                    context.pushNamed(
-                      'MainMenu',
-                      queryParameters: {
-                        'deviceName': serializeParam(
-                          widget.deviceName,
-                          ParamType.String,
-                        ),
-                        'deviceID': serializeParam(
-                          widget.deviceId,
-                          ParamType.String,
-                        ),
-                        'deviceRssi': serializeParam(
-                          widget.deviceRssi,
-                          ParamType.int,
-                        ),
-                        'hasWriteCharacteristic': serializeParam(
-                          true,
-                          ParamType.bool,
-                        ),
-                      }.withoutNulls,
-                    );
-                  },
-                  text: 'Pages',
-                  options: FFButtonOptions(
-                    height: 40.0,
-                    padding:
-                        const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
-                    iconPadding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                    color: FlutterFlowTheme.of(context).primary,
-                    textStyle: FlutterFlowTheme.of(context).bodySmall.override(
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'You can send data to the connected device and receive data back from it.',
+                    style: FlutterFlowTheme.of(context).labelMedium.override(
                           fontFamily: 'Montserrat',
                           letterSpacing: 0.0,
+                          lineHeight: 1.4,
                         ),
-                    elevation: 0.0,
-                    borderSide: const BorderSide(
-                      color: Colors.transparent,
-                      width: 0.0,
-                    ),
-                    borderRadius: BorderRadius.circular(8.0),
                   ),
-                ),
-              ],
+                  Padding(
+                    padding:
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Expanded(
+                          child: SizedBox(
+                            width: double.infinity,
+                            child: TextFormField(
+                              controller: _model.textController,
+                              focusNode: _model.textFieldFocusNode,
+                              autofocus: false,
+                              textCapitalization: TextCapitalization.none,
+                              obscureText: false,
+                              decoration: InputDecoration(
+                                hintText: 'Enter data to send...',
+                                hintStyle: FlutterFlowTheme.of(context)
+                                    .labelLarge
+                                    .override(
+                                      fontFamily: 'Montserrat',
+                                      letterSpacing: 0.0,
+                                    ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    width: 2.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(10.0),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    width: 2.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(10.0),
+                                ),
+                                errorBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: FlutterFlowTheme.of(context).error,
+                                    width: 2.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(10.0),
+                                ),
+                                focusedErrorBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: FlutterFlowTheme.of(context).error,
+                                    width: 2.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(10.0),
+                                ),
+                                filled: true,
+                                fillColor:
+                                    FlutterFlowTheme.of(context).tertiary,
+                              ),
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyLarge
+                                  .override(
+                                    fontFamily: 'Montserrat',
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    letterSpacing: 0.0,
+                                  ),
+                              validator: _model.textControllerValidator
+                                  .asValidator(context),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              10.0, 0.0, 0.0, 0.0),
+                          child: FlutterFlowIconButton(
+                            borderColor: Colors.transparent,
+                            borderRadius: 30.0,
+                            buttonSize: 50.0,
+                            fillColor: FlutterFlowTheme.of(context).tertiary,
+                            icon: const Icon(
+                              Icons.send_rounded,
+                              color: Colors.white,
+                              size: 24.0,
+                            ),
+                            showLoadingIndicator: true,
+                            onPressed: () async {
+                              await actions.sendData(
+                                BTDeviceStruct(
+                                  name: widget.deviceName,
+                                  id: widget.deviceId,
+                                  rssi: _model.currentRssi,
+                                ),
+                                _model.textController.text,
+                              );
+                              ScaffoldMessenger.of(context).clearSnackBars();
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(
+                                    'Data sent to device',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyLarge
+                                        .override(
+                                          fontFamily: 'Montserrat',
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                          letterSpacing: 0.0,
+                                        ),
+                                  ),
+                                  duration: const Duration(milliseconds: 2000),
+                                  backgroundColor:
+                                      FlutterFlowTheme.of(context).success,
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding:
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
+                    child: wrapWithModel(
+                      model: _model.displayRecMesgModel,
+                      updateCallback: () => setState(() {}),
+                      child: DisplayRecMesgWidget(
+                        device: BTDeviceStruct(
+                          name: widget.deviceName,
+                          id: widget.deviceId,
+                          rssi: widget.deviceRssi,
+                        ),
+                      ),
+                    ),
+                  ),
+                  FFButtonWidget(
+                    onPressed: () async {
+                      context.pushNamed(
+                        'MainMenu',
+                        queryParameters: {
+                          'deviceName': serializeParam(
+                            widget.deviceName,
+                            ParamType.String,
+                          ),
+                          'deviceID': serializeParam(
+                            widget.deviceId,
+                            ParamType.String,
+                          ),
+                          'deviceRssi': serializeParam(
+                            widget.deviceRssi,
+                            ParamType.int,
+                          ),
+                          'hasWriteCharacteristic': serializeParam(
+                            true,
+                            ParamType.bool,
+                          ),
+                        }.withoutNulls,
+                      );
+                    },
+                    text: 'Pages',
+                    options: FFButtonOptions(
+                      height: 40.0,
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                      iconPadding:
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      color: FlutterFlowTheme.of(context).primary,
+                      textStyle:
+                          FlutterFlowTheme.of(context).bodySmall.override(
+                                fontFamily: 'Montserrat',
+                                letterSpacing: 0.0,
+                              ),
+                      elevation: 0.0,
+                      borderSide: const BorderSide(
+                        color: Colors.transparent,
+                        width: 0.0,
+                      ),
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),

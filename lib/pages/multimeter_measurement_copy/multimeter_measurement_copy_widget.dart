@@ -4,11 +4,11 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/widgets/display_rec_mesg/display_rec_mesg_widget.dart';
 import 'package:flutter/material.dart';
-import 'multimeter_measurement_model.dart';
-export 'multimeter_measurement_model.dart';
+import 'multimeter_measurement_copy_model.dart';
+export 'multimeter_measurement_copy_model.dart';
 
-class MultimeterMeasurementWidget extends StatefulWidget {
-  const MultimeterMeasurementWidget({
+class MultimeterMeasurementCopyWidget extends StatefulWidget {
+  const MultimeterMeasurementCopyWidget({
     super.key,
     required this.deviceName,
     required this.deviceID,
@@ -22,20 +22,20 @@ class MultimeterMeasurementWidget extends StatefulWidget {
   final bool? hasWriteCharacteristic;
 
   @override
-  State<MultimeterMeasurementWidget> createState() =>
-      _MultimeterMeasurementWidgetState();
+  State<MultimeterMeasurementCopyWidget> createState() =>
+      _MultimeterMeasurementCopyWidgetState();
 }
 
-class _MultimeterMeasurementWidgetState
-    extends State<MultimeterMeasurementWidget> {
-  late MultimeterMeasurementModel _model;
+class _MultimeterMeasurementCopyWidgetState
+    extends State<MultimeterMeasurementCopyWidget> {
+  late MultimeterMeasurementCopyModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => MultimeterMeasurementModel());
+    _model = createModel(context, () => MultimeterMeasurementCopyModel());
   }
 
   @override
