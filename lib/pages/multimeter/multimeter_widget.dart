@@ -115,7 +115,27 @@ class _MultimeterWidgetState extends State<MultimeterWidget> {
                         'Voltmeter',
                       );
 
-                      context.pushNamed('multimeterMeasurement');
+                      context.pushNamed(
+                        'multimeterMeasurement',
+                        queryParameters: {
+                          'deviceName': serializeParam(
+                            widget.deviceName,
+                            ParamType.String,
+                          ),
+                          'deviceID': serializeParam(
+                            widget.deviceID,
+                            ParamType.String,
+                          ),
+                          'deviceRssi': serializeParam(
+                            widget.deviceRssi,
+                            ParamType.int,
+                          ),
+                          'hasWriteCharacteristic': serializeParam(
+                            true,
+                            ParamType.bool,
+                          ),
+                        }.withoutNulls,
+                      );
                     },
                     child: Material(
                       color: Colors.transparent,
@@ -212,7 +232,27 @@ class _MultimeterWidgetState extends State<MultimeterWidget> {
                         'Ammeter',
                       );
 
-                      context.pushNamed('multimeterMeasurement');
+                      context.pushNamed(
+                        'multimeterMeasurement',
+                        queryParameters: {
+                          'deviceName': serializeParam(
+                            widget.deviceName,
+                            ParamType.String,
+                          ),
+                          'deviceID': serializeParam(
+                            widget.deviceID,
+                            ParamType.String,
+                          ),
+                          'deviceRssi': serializeParam(
+                            widget.deviceRssi,
+                            ParamType.int,
+                          ),
+                          'hasWriteCharacteristic': serializeParam(
+                            true,
+                            ParamType.bool,
+                          ),
+                        }.withoutNulls,
+                      );
                     },
                     child: Material(
                       color: Colors.transparent,
@@ -309,7 +349,27 @@ class _MultimeterWidgetState extends State<MultimeterWidget> {
                         'Ohmmeter',
                       );
 
-                      context.pushNamed('multimeterMeasurement');
+                      context.pushNamed(
+                        'multimeterMeasurement',
+                        queryParameters: {
+                          'deviceName': serializeParam(
+                            widget.deviceName,
+                            ParamType.String,
+                          ),
+                          'deviceID': serializeParam(
+                            widget.deviceID,
+                            ParamType.String,
+                          ),
+                          'deviceRssi': serializeParam(
+                            widget.deviceRssi,
+                            ParamType.int,
+                          ),
+                          'hasWriteCharacteristic': serializeParam(
+                            true,
+                            ParamType.bool,
+                          ),
+                        }.withoutNulls,
+                      );
                     },
                     child: Material(
                       color: Colors.transparent,

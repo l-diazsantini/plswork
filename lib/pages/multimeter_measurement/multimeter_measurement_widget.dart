@@ -1,3 +1,4 @@
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -7,7 +8,18 @@ import 'multimeter_measurement_model.dart';
 export 'multimeter_measurement_model.dart';
 
 class MultimeterMeasurementWidget extends StatefulWidget {
-  const MultimeterMeasurementWidget({super.key});
+  const MultimeterMeasurementWidget({
+    super.key,
+    required this.deviceName,
+    required this.deviceID,
+    required this.deviceRssi,
+    required this.hasWriteCharacteristic,
+  });
+
+  final String? deviceName;
+  final String? deviceID;
+  final int? deviceRssi;
+  final bool? hasWriteCharacteristic;
 
   @override
   State<MultimeterMeasurementWidget> createState() =>
@@ -92,7 +104,13 @@ class _MultimeterMeasurementWidgetState
                       child: wrapWithModel(
                         model: _model.displayRecMesgModel,
                         updateCallback: () => setState(() {}),
-                        child: const DisplayRecMesgWidget(),
+                        child: DisplayRecMesgWidget(
+                          device: BTDeviceStruct(
+                            name: widget.deviceName,
+                            id: widget.deviceID,
+                            rssi: widget.deviceRssi,
+                          ),
+                        ),
                       ),
                     ),
                   ),

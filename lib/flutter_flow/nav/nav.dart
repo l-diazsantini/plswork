@@ -144,7 +144,24 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'multimeterMeasurement',
           path: '/multimeterMeasurement',
-          builder: (context, params) => const MultimeterMeasurementWidget(),
+          builder: (context, params) => MultimeterMeasurementWidget(
+            deviceName: params.getParam(
+              'deviceName',
+              ParamType.String,
+            ),
+            deviceID: params.getParam(
+              'deviceID',
+              ParamType.String,
+            ),
+            deviceRssi: params.getParam(
+              'deviceRssi',
+              ParamType.int,
+            ),
+            hasWriteCharacteristic: params.getParam(
+              'hasWriteCharacteristic',
+              ParamType.bool,
+            ),
+          ),
         ),
         FFRoute(
           name: 'WaveGenSelection',
