@@ -228,6 +228,28 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ParamType.bool,
             ),
           ),
+        ),
+        FFRoute(
+          name: 'multimeterMeasurementCopy3',
+          path: '/multimeterMeasurementCopy3',
+          builder: (context, params) => MultimeterMeasurementCopy3Widget(
+            deviceName: params.getParam(
+              'deviceName',
+              ParamType.String,
+            ),
+            deviceID: params.getParam(
+              'deviceID',
+              ParamType.String,
+            ),
+            deviceRssi: params.getParam(
+              'deviceRssi',
+              ParamType.int,
+            ),
+            hasWriteCharacteristic: params.getParam(
+              'hasWriteCharacteristic',
+              ParamType.bool,
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

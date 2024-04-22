@@ -13,3 +13,5 @@ export '/pages/multimeter_measurement_copy/multimeter_measurement_copy_widget.da
     show MultimeterMeasurementCopyWidget;
 export '/pages/multimeter_measurement_copy2/multimeter_measurement_copy2_widget.dart'
     show MultimeterMeasurementCopy2Widget;
+export '/pages/multimeter_measurement_copy3/multimeter_measurement_copy3_widget.dart'
+    show MultimeterMeasurementCopy3Widget;
