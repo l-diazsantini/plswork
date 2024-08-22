@@ -10,7 +10,6 @@ class OscilloscopeModel extends FlutterFlowModel<OscilloscopeWidget> {
 
   ///  State fields for stateful widgets in this page.
 
-  final unfocusNode = FocusNode();
   // State field(s) for DropDown widget.
   String? dropDownValue;
   FormFieldController<String>? dropDownValueController;
@@ -19,7 +18,5 @@ class OscilloscopeModel extends FlutterFlowModel<OscilloscopeWidget> {
   void initState(BuildContext context) {}
 
   @override
-  void dispose() {
-    unfocusNode.dispose();
-  }
+  void dispose() {}
 }

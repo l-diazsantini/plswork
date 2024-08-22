@@ -42,9 +42,8 @@ class _DisplayRecMesgWidgetState extends State<DisplayRecMesgWidget> {
           _model.receivedData = await actions.receiveData(
             widget.device!,
           );
-          setState(() {
-            _model.data = _model.receivedData;
-          });
+          _model.data = _model.receivedData;
+          setState(() {});
         },
         startImmediately: true,
       );

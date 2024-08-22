@@ -14,7 +14,6 @@ class DemoPageModel extends FlutterFlowModel<DemoPageWidget> {
 
   ///  State fields for stateful widgets in this page.
 
-  final unfocusNode = FocusNode();
   InstantTimer? rssiUpdateTimer;
   // Stores action output result for [Custom Action - getRssi] action in DemoPage widget.
   int? updatedRssi;
@@ -35,7 +34,6 @@ class DemoPageModel extends FlutterFlowModel<DemoPageWidget> {
 
   @override
   void dispose() {
-    unfocusNode.dispose();
     rssiUpdateTimer?.cancel();
     signalIndicatorModel.dispose();
     textFieldFocusNode?.dispose();

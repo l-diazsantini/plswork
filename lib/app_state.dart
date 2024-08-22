@@ -41,17 +41,17 @@ class FFAppState extends ChangeNotifier {
   }
 
   void addToXAxis(double value) {
-    _xAxis.add(value);
+    xAxis.add(value);
     prefs.setStringList('ff_xAxis', _xAxis.map((x) => x.toString()).toList());
   }
 
   void removeFromXAxis(double value) {
-    _xAxis.remove(value);
+    xAxis.remove(value);
     prefs.setStringList('ff_xAxis', _xAxis.map((x) => x.toString()).toList());
   }
 
   void removeAtIndexFromXAxis(int index) {
-    _xAxis.removeAt(index);
+    xAxis.removeAt(index);
     prefs.setStringList('ff_xAxis', _xAxis.map((x) => x.toString()).toList());
   }
 
@@ -59,12 +59,12 @@ class FFAppState extends ChangeNotifier {
     int index,
     double Function(double) updateFn,
   ) {
-    _xAxis[index] = updateFn(_xAxis[index]);
+    xAxis[index] = updateFn(_xAxis[index]);
     prefs.setStringList('ff_xAxis', _xAxis.map((x) => x.toString()).toList());
   }
 
   void insertAtIndexInXAxis(int index, double value) {
-    _xAxis.insert(index, value);
+    xAxis.insert(index, value);
     prefs.setStringList('ff_xAxis', _xAxis.map((x) => x.toString()).toList());
   }
 
@@ -76,17 +76,17 @@ class FFAppState extends ChangeNotifier {
   }
 
   void addToYAxis(double value) {
-    _yAxis.add(value);
+    yAxis.add(value);
     prefs.setStringList('ff_yAxis', _yAxis.map((x) => x.toString()).toList());
   }
 
   void removeFromYAxis(double value) {
-    _yAxis.remove(value);
+    yAxis.remove(value);
     prefs.setStringList('ff_yAxis', _yAxis.map((x) => x.toString()).toList());
   }
 
   void removeAtIndexFromYAxis(int index) {
-    _yAxis.removeAt(index);
+    yAxis.removeAt(index);
     prefs.setStringList('ff_yAxis', _yAxis.map((x) => x.toString()).toList());
   }
 
@@ -94,12 +94,12 @@ class FFAppState extends ChangeNotifier {
     int index,
     double Function(double) updateFn,
   ) {
-    _yAxis[index] = updateFn(_yAxis[index]);
+    yAxis[index] = updateFn(_yAxis[index]);
     prefs.setStringList('ff_yAxis', _yAxis.map((x) => x.toString()).toList());
   }
 
   void insertAtIndexInYAxis(int index, double value) {
-    _yAxis.insert(index, value);
+    yAxis.insert(index, value);
     prefs.setStringList('ff_yAxis', _yAxis.map((x) => x.toString()).toList());
   }
 }

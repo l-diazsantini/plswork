@@ -18,19 +18,23 @@ class BTDeviceStruct extends BaseStruct {
   String? _name;
   String get name => _name ?? '';
   set name(String? val) => _name = val;
+
   bool hasName() => _name != null;
 
   // "id" field.
   String? _id;
   String get id => _id ?? '';
   set id(String? val) => _id = val;
+
   bool hasId() => _id != null;
 
   // "rssi" field.
   int? _rssi;
   int get rssi => _rssi ?? 0;
   set rssi(int? val) => _rssi = val;
-  void incrementRssi(int amount) => _rssi = rssi + amount;
+
+  void incrementRssi(int amount) => rssi = rssi + amount;
+
   bool hasRssi() => _rssi != null;
 
   static BTDeviceStruct fromMap(Map<String, dynamic> data) => BTDeviceStruct(

@@ -36,7 +36,6 @@ class DeviceListModel extends FlutterFlowModel<DeviceListWidget> {
 
   ///  State fields for stateful widgets in this page.
 
-  final unfocusNode = FocusNode();
   // Stores action output result for [Custom Action - getConnectedDevices] action in DeviceList widget.
   List<BTDeviceStruct>? fetchedConnectedDevices;
   // Stores action output result for [Custom Action - findDevices] action in DeviceList widget.
@@ -52,7 +51,5 @@ class DeviceListModel extends FlutterFlowModel<DeviceListWidget> {
   void initState(BuildContext context) {}
 
   @override
-  void dispose() {
-    unfocusNode.dispose();
-  }
+  void dispose() {}
 }

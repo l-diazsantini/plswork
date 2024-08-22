@@ -42,9 +42,8 @@ class _DemoPageWidgetState extends State<DemoPageWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      setState(() {
-        _model.currentRssi = widget.deviceRssi;
-      });
+      _model.currentRssi = widget.deviceRssi;
+      setState(() {});
       _model.rssiUpdateTimer = InstantTimer.periodic(
         duration: const Duration(milliseconds: 2000),
         callback: (timer) async {
@@ -55,9 +54,8 @@ class _DemoPageWidgetState extends State<DemoPageWidget> {
               rssi: widget.deviceRssi,
             ),
           );
-          setState(() {
-            _model.currentRssi = _model.updatedRssi;
-          });
+          _model.currentRssi = _model.updatedRssi;
+          setState(() {});
         },
         startImmediately: true,
       );
@@ -77,9 +75,7 @@ class _DemoPageWidgetState extends State<DemoPageWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => _model.unfocusNode.canRequestFocus
-          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-          : FocusScope.of(context).unfocus(),
+      onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,

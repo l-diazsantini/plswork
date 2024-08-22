@@ -38,26 +38,22 @@ class _DeviceListWidgetState extends State<DeviceListWidget>
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      setState(() {
-        _model.isBluetoothEnabled = widget.isBTEnabled;
-      });
+      _model.isBluetoothEnabled = widget.isBTEnabled;
+      setState(() {});
       if (_model.isBluetoothEnabled) {
-        setState(() {
-          _model.isFetchingConnectedDevices = true;
-          _model.isFetchingDevices = true;
-        });
+        _model.isFetchingConnectedDevices = true;
+        _model.isFetchingDevices = true;
+        setState(() {});
         _model.fetchedConnectedDevices = await actions.getConnectedDevices();
-        setState(() {
-          _model.isFetchingConnectedDevices = false;
-          _model.connectedDevices =
-              _model.fetchedConnectedDevices!.toList().cast<BTDeviceStruct>();
-        });
+        _model.isFetchingConnectedDevices = false;
+        _model.connectedDevices =
+            _model.fetchedConnectedDevices!.toList().cast<BTDeviceStruct>();
+        setState(() {});
         _model.fetchedDevices = await actions.findDevices();
-        setState(() {
-          _model.isFetchingDevices = false;
-          _model.foundDevices =
-              _model.fetchedDevices!.toList().cast<BTDeviceStruct>();
-        });
+        _model.isFetchingDevices = false;
+        _model.foundDevices =
+            _model.fetchedDevices!.toList().cast<BTDeviceStruct>();
+        setState(() {});
       }
     });
 
@@ -103,9 +99,7 @@ class _DeviceListWidgetState extends State<DeviceListWidget>
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => _model.unfocusNode.canRequestFocus
-          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-          : FocusScope.of(context).unfocus(),
+      onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -210,6 +204,7 @@ class _DeviceListWidgetState extends State<DeviceListWidget>
                                                 ),
                                               );
                                             }
+
                                             return ListView.builder(
                                               padding: EdgeInsets.zero,
                                               shrinkWrap: true,
@@ -443,36 +438,31 @@ class _DeviceListWidgetState extends State<DeviceListWidget>
                                                   highlightColor:
                                                       Colors.transparent,
                                                   onTap: () async {
-                                                    setState(() {
-                                                      _model.isFetchingConnectedDevices =
-                                                          true;
-                                                      _model.isFetchingDevices =
-                                                          true;
-                                                    });
+                                                    _model.isFetchingConnectedDevices =
+                                                        true;
+                                                    _model.isFetchingDevices =
+                                                        true;
+                                                    setState(() {});
                                                     _model.fetchedConnectedDevicesCopy =
                                                         await actions
                                                             .getConnectedDevices();
-                                                    setState(() {
-                                                      _model.isFetchingConnectedDevices =
-                                                          false;
-                                                      _model.connectedDevices = _model
-                                                          .fetchedConnectedDevices!
-                                                          .toList()
-                                                          .cast<
-                                                              BTDeviceStruct>();
-                                                    });
+                                                    _model.isFetchingConnectedDevices =
+                                                        false;
+                                                    _model.connectedDevices = _model
+                                                        .fetchedConnectedDevices!
+                                                        .toList()
+                                                        .cast<BTDeviceStruct>();
+                                                    setState(() {});
                                                     _model.fetchedDevicesCopy =
                                                         await actions
                                                             .findDevices();
-                                                    setState(() {
-                                                      _model.isFetchingDevices =
-                                                          false;
-                                                      _model.foundDevices = _model
-                                                          .fetchedDevices!
-                                                          .toList()
-                                                          .cast<
-                                                              BTDeviceStruct>();
-                                                    });
+                                                    _model.isFetchingDevices =
+                                                        false;
+                                                    _model.foundDevices = _model
+                                                        .fetchedDevices!
+                                                        .toList()
+                                                        .cast<BTDeviceStruct>();
+                                                    setState(() {});
 
                                                     setState(() {});
                                                   },
@@ -519,6 +509,7 @@ class _DeviceListWidgetState extends State<DeviceListWidget>
                                                   ),
                                                 );
                                               }
+
                                               return ListView.builder(
                                                 padding: EdgeInsets.zero,
                                                 shrinkWrap: true,
@@ -550,10 +541,9 @@ class _DeviceListWidgetState extends State<DeviceListWidget>
                                                                 .connectDevice(
                                                           displayDevicesItem,
                                                         );
-                                                        setState(() {
-                                                          _model.addToConnectedDevices(
-                                                              displayDevicesItem);
-                                                        });
+                                                        _model.addToConnectedDevices(
+                                                            displayDevicesItem);
+                                                        setState(() {});
 
                                                         context.pushNamed(
                                                           'DemoPage',

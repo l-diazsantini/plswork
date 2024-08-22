@@ -8,7 +8,6 @@ class MultimeterMeasurementCopy3Model
     extends FlutterFlowModel<MultimeterMeasurementCopy3Widget> {
   ///  State fields for stateful widgets in this page.
 
-  final unfocusNode = FocusNode();
   // Model for DisplayRecMesg component.
   late DisplayRecMesgModel displayRecMesgModel;
 
@@ -19,7 +18,6 @@ class MultimeterMeasurementCopy3Model
 
   @override
   void dispose() {
-    unfocusNode.dispose();
     displayRecMesgModel.dispose();
   }
 }
