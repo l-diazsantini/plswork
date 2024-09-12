@@ -101,7 +101,7 @@ class _MultimeterMeasurementWidgetState
                           const EdgeInsetsDirectional.fromSTEB(0.0, 250.0, 0.0, 0.0),
                       child: wrapWithModel(
                         model: _model.displayRecMesgModel,
-                        updateCallback: () => setState(() {}),
+                        updateCallback: () => safeSetState(() {}),
                         child: DisplayRecMesgWidget(
                           device: BTDeviceStruct(
                             name: widget.deviceName,

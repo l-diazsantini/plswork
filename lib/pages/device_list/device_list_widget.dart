@@ -39,21 +39,21 @@ class _DeviceListWidgetState extends State<DeviceListWidget>
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       _model.isBluetoothEnabled = widget.isBTEnabled;
-      setState(() {});
+      safeSetState(() {});
       if (_model.isBluetoothEnabled) {
         _model.isFetchingConnectedDevices = true;
         _model.isFetchingDevices = true;
-        setState(() {});
+        safeSetState(() {});
         _model.fetchedConnectedDevices = await actions.getConnectedDevices();
         _model.isFetchingConnectedDevices = false;
         _model.connectedDevices =
             _model.fetchedConnectedDevices!.toList().cast<BTDeviceStruct>();
-        setState(() {});
+        safeSetState(() {});
         _model.fetchedDevices = await actions.findDevices();
         _model.isFetchingDevices = false;
         _model.foundDevices =
             _model.fetchedDevices!.toList().cast<BTDeviceStruct>();
-        setState(() {});
+        safeSetState(() {});
       }
     });
 
@@ -442,7 +442,7 @@ class _DeviceListWidgetState extends State<DeviceListWidget>
                                                         true;
                                                     _model.isFetchingDevices =
                                                         true;
-                                                    setState(() {});
+                                                    safeSetState(() {});
                                                     _model.fetchedConnectedDevicesCopy =
                                                         await actions
                                                             .getConnectedDevices();
@@ -452,7 +452,7 @@ class _DeviceListWidgetState extends State<DeviceListWidget>
                                                         .fetchedConnectedDevices!
                                                         .toList()
                                                         .cast<BTDeviceStruct>();
-                                                    setState(() {});
+                                                    safeSetState(() {});
                                                     _model.fetchedDevicesCopy =
                                                         await actions
                                                             .findDevices();
@@ -462,9 +462,9 @@ class _DeviceListWidgetState extends State<DeviceListWidget>
                                                         .fetchedDevices!
                                                         .toList()
                                                         .cast<BTDeviceStruct>();
-                                                    setState(() {});
+                                                    safeSetState(() {});
 
-                                                    setState(() {});
+                                                    safeSetState(() {});
                                                   },
                                                   child: Icon(
                                                     Icons.refresh_rounded,
@@ -543,7 +543,7 @@ class _DeviceListWidgetState extends State<DeviceListWidget>
                                                         );
                                                         _model.addToConnectedDevices(
                                                             displayDevicesItem);
-                                                        setState(() {});
+                                                        safeSetState(() {});
 
                                                         context.pushNamed(
                                                           'DemoPage',
@@ -574,7 +574,7 @@ class _DeviceListWidgetState extends State<DeviceListWidget>
                                                           }.withoutNulls,
                                                         );
 
-                                                        setState(() {});
+                                                        safeSetState(() {});
                                                       },
                                                       child: Container(
                                                         width: double.infinity,

@@ -43,7 +43,7 @@ class _DisplayRecMesgWidgetState extends State<DisplayRecMesgWidget> {
             widget.device!,
           );
           _model.data = _model.receivedData;
-          setState(() {});
+          safeSetState(() {});
         },
         startImmediately: true,
       );

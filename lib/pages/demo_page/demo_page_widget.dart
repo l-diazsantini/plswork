@@ -43,7 +43,7 @@ class _DemoPageWidgetState extends State<DemoPageWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       _model.currentRssi = widget.deviceRssi;
-      setState(() {});
+      safeSetState(() {});
       _model.rssiUpdateTimer = InstantTimer.periodic(
         duration: const Duration(milliseconds: 2000),
         callback: (timer) async {
@@ -55,7 +55,7 @@ class _DemoPageWidgetState extends State<DemoPageWidget> {
             ),
           );
           _model.currentRssi = _model.updatedRssi;
-          setState(() {});
+          safeSetState(() {});
         },
         startImmediately: true,
       );
@@ -107,7 +107,7 @@ class _DemoPageWidgetState extends State<DemoPageWidget> {
                   if (_model.currentRssi != null)
                     wrapWithModel(
                       model: _model.signalIndicatorModel,
-                      updateCallback: () => setState(() {}),
+                      updateCallback: () => safeSetState(() {}),
                       child: SignalIndicatorWidget(
                         rssi: _model.currentRssi!,
                         color: valueOrDefault<Color>(
@@ -312,7 +312,7 @@ class _DemoPageWidgetState extends State<DemoPageWidget> {
                         const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
                     child: wrapWithModel(
                       model: _model.displayRecMesgModel,
-                      updateCallback: () => setState(() {}),
+                      updateCallback: () => safeSetState(() {}),
                       child: DisplayRecMesgWidget(
                         device: BTDeviceStruct(
                           name: widget.deviceName,

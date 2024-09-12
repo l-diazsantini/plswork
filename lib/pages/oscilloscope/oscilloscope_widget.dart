@@ -181,7 +181,7 @@ class _OscilloscopeWidgetState extends State<OscilloscopeWidget>
                                               FormFieldController<String>(null),
                                       options: const ['Amplitude', 'Frequency'],
                                       onChanged: (val) async {
-                                        setState(
+                                        safeSetState(
                                             () => _model.dropDownValue = val);
                                         await actions.sendData(
                                           BTDeviceStruct(
