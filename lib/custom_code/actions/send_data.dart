@@ -10,17 +10,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 
 Future sendData(BTDeviceStruct deviceInfo, String data) async {
-  //getting device info
-  final device = BluetoothDevice.fromId(deviceInfo.id, name: deviceInfo.name);
-  //fidning bluetooth servies
-  final services = await device.discoverServices();
-  //checking for writing support
-  for (BluetoothService service in services) {
-    for (BluetoothCharacteristic characteristic in service.characteristics) {
-      final isWrite = characteristic.properties.write;
-      if (isWrite) {
-        await characteristic.write(data.codeUnits);
+  try {
+    final device = BluetoothDevice.fromId(deviceInfo.id);
+    final services = await device.discoverServices();
+    for (BluetoothService service in services) {
+      for (BluetoothCharacteristic characteristic in service.characteristics) {
+        final isWrite = characteristic.properties.write;
+        final isNotify = characteristic.properties.notify;
+        if (isWrite && isNotify) {
+          await characteristic.write(data.codeUnits);
+        }
       }
     }
+  } catch (e) {
+    debugPrint(e.toString());
   }
+  return null;
 }

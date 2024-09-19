@@ -10,8 +10,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 
 Future<int> getRssi(BTDeviceStruct deviceInfo) async {
-  //initializing bluetooth device
-  final device = BluetoothDevice.fromId(deviceInfo.id, name: deviceInfo.name);
-  //reading siganl strength of the device
-  return await device.readRssi();
+  final device = BluetoothDevice.fromId(deviceInfo.id);
+  int retrievedRssi;
+  try {
+    retrievedRssi = await device.readRssi();
+  } catch (e) {
+    retrievedRssi = -1;
+  }
+  return retrievedRssi;
 }
